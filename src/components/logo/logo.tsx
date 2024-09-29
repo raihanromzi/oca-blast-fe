@@ -35,7 +35,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
       <Box
         alt="Single logo"
         component="img"
-        src="public/assets/icons/logo/logo-oca.png"
+        src="/assets/icons/logo/logo-oca.png"
         width="100%"
         height="100%"
       />
