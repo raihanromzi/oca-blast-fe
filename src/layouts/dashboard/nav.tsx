@@ -76,11 +76,13 @@ export function NavDesktop({
     >
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
           mb: 2,
           mt: -2,
+          [theme.breakpoints.up(layoutQuery)]: {
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+          },
         }}
       >
         <IconButton onClick={toggleSidebar}>
