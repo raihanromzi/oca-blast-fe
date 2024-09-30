@@ -1,30 +1,124 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
 
-import { _posts, _tasks, _timeline } from 'src/_mock';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import { Pagination } from 'swiper/modules';
+
+
+// import { _posts, _tasks, _timeline } from 'src/_mock';
+
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { AnalyticsNews } from '../analytics-news';
-import { AnalyticsTasks } from '../analytics-tasks';
-import { AnalyticsCurrentVisits } from '../analytics-current-visits';
-import { AnalyticsOrderTimeline } from '../analytics-order-timeline';
-import { AnalyticsWebsiteVisits } from '../analytics-website-visits';
-import { AnalyticsWidgetSummary } from '../analytics-widget-summary';
+import Box from '@mui/material/Box';
+
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+
+
+// import { AnalyticsNews } from '../analytics-news';
+// import { AnalyticsTasks } from '../analytics-tasks';
+// import { AnalyticsCurrentVisits } from '../analytics-current-visits';
+// import { AnalyticsOrderTimeline } from '../analytics-order-timeline';
+// import { AnalyticsWebsiteVisits } from '../analytics-website-visits';
+// import { AnalyticsWidgetSummary } from '../analytics-widget-summary';
 import { AnalyticsTrafficBySite } from '../analytics-traffic-by-site';
-import { AnalyticsCurrentSubject } from '../analytics-current-subject';
-import { AnalyticsConversionRates } from '../analytics-conversion-rates';
+// import { AnalyticsCurrentSubject } from '../analytics-current-subject';
+// import { AnalyticsConversionRates } from '../analytics-conversion-rates';
 
 // ----------------------------------------------------------------------
 
 export function OverviewAnalyticsView() {
   return (
     <DashboardContent maxWidth="xl">
-      <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
+      {/* <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
         Hi, Welcome! 👋
-      </Typography>
+      </Typography> */}
+
+      {/* Banner slideshow inside Material-UI Card */}
+      <Card sx={{ mb: 4, p: 3, borderRadius: 2 }}>
+        <Typography variant="h5" component="div" sx={{ mb: 2, textAlign: 'center' }}>
+            Hi, Welcome to OCA Dashboard! 👋
+        </Typography>
+
+        <Swiper
+          pagination={{ dynamicBullets: true }}
+          modules={[Pagination]}
+          className="mySwiper"
+          style={{
+            borderRadius: '10px', // Rounded corners for Swiper
+            overflow: 'hidden', // Make sure content fits
+          }}
+        >
+          <SwiperSlide>
+            <Box
+              component="img"
+              src="https://via.placeholder.com/1200x400?text=Banner+1"
+              alt="Banner 1"
+              sx={{ width: '100%', height: 'auto' }}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              component="img"
+              src="https://via.placeholder.com/1200x400?text=Banner+2"
+              alt="Banner 2"
+              sx={{ width: '100%', height: 'auto' }}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              component="img"
+              src="https://via.placeholder.com/1200x400?text=Banner+3"
+              alt="Banner 3"
+              sx={{ width: '100%', height: 'auto' }}
+            />
+          </SwiperSlide>
+        </Swiper>
+      </Card>
 
       <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} md={6} lg={4}>
+          <AnalyticsTrafficBySite
+            title="WhatsApp"
+            list={[
+              { value: 'facebook', label: 'Facebook', total: 323234 },
+              { value: 'google', label: 'Google', total: 341212 },
+              { value: 'linkedin', label: 'Linkedin', total: 411213 },
+              { value: 'twitter', label: 'Twitter', total: 443232 },
+            ]}
+          />
+        </Grid>
+
+        <Grid xs={12} md={6} lg={4}>
+          <AnalyticsTrafficBySite
+            title="WhatsApp"
+            list={[
+              { value: 'facebook', label: 'Facebook', total: 323234 },
+              { value: 'google', label: 'Google', total: 341212 },
+              { value: 'linkedin', label: 'Linkedin', total: 411213 },
+              { value: 'twitter', label: 'Twitter', total: 443232 },
+            ]}
+          />
+        </Grid>
+
+        <Grid xs={12} md={6} lg={4}>
+          <AnalyticsTrafficBySite
+            title="Email"
+            list={[
+              { value: 'facebook', label: 'Facebook', total: 323234 },
+              { value: 'google', label: 'Google', total: 341212 },
+              { value: 'linkedin', label: 'Linkedin', total: 411213 },
+              { value: 'twitter', label: 'Twitter', total: 443232 },
+            ]}
+          />
+        </Grid>
+
+        {/* <Grid xs={12} sm={6} md={3}>
           <AnalyticsWidgetSummary
             title="Weekly sales"
             percent={2.6}
@@ -35,9 +129,9 @@ export function OverviewAnalyticsView() {
               series: [22, 8, 35, 50, 82, 84, 77, 12],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} sm={6} md={3}>
+        {/* <Grid xs={12} sm={6} md={3}>
           <AnalyticsWidgetSummary
             title="New users"
             percent={-0.1}
@@ -49,9 +143,9 @@ export function OverviewAnalyticsView() {
               series: [56, 47, 40, 62, 73, 30, 23, 54],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} sm={6} md={3}>
+        {/* <Grid xs={12} sm={6} md={3}>
           <AnalyticsWidgetSummary
             title="Purchase orders"
             percent={2.8}
@@ -63,9 +157,9 @@ export function OverviewAnalyticsView() {
               series: [40, 70, 50, 28, 70, 75, 7, 64],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} sm={6} md={3}>
+        {/* <Grid xs={12} sm={6} md={3}>
           <AnalyticsWidgetSummary
             title="Messages"
             percent={3.6}
@@ -77,9 +171,9 @@ export function OverviewAnalyticsView() {
               series: [56, 30, 23, 54, 47, 40, 62, 73],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AnalyticsCurrentVisits
             title="Current visits"
             chart={{
@@ -91,9 +185,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AnalyticsWebsiteVisits
             title="Website visits"
             subheader="(+43%) than last year"
@@ -105,9 +199,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AnalyticsConversionRates
             title="Conversion rates"
             subheader="(+43%) than last year"
@@ -119,9 +213,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AnalyticsCurrentSubject
             title="Current subject"
             chart={{
@@ -133,31 +227,19 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AnalyticsNews title="News" list={_posts.slice(0, 5)} />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AnalyticsOrderTimeline title="Order timeline" list={_timeline} />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
-          <AnalyticsTrafficBySite
-            title="Traffic by site"
-            list={[
-              { value: 'facebook', label: 'Facebook', total: 323234 },
-              { value: 'google', label: 'Google', total: 341212 },
-              { value: 'linkedin', label: 'Linkedin', total: 411213 },
-              { value: 'twitter', label: 'Twitter', total: 443232 },
-            ]}
-          />
-        </Grid>
-
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AnalyticsTasks title="Tasks" list={_tasks} />
-        </Grid>
+        </Grid> */}
       </Grid>
     </DashboardContent>
   );

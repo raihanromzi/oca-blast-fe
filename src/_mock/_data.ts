@@ -28,6 +28,7 @@ export const _users = [...Array(24)].map((_, index) => ({
   isVerified: _boolean(index),
   avatarUrl: `https://static.wixstatic.com/ficons/ee59d7_b88b2927daf34feebbcc29bb71da0c17%7Emv2.ico`,
   status: index % 4 ? 'active' : 'banned',
+  campaignName: 'Campaign Name',
   role:
     [
       'Leader',
