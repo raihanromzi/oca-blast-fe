@@ -1,70 +1,87 @@
 import type { CardProps } from '@mui/material/Card';
-
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { fShortenNumber } from 'src/utils/format-number';
-
-import { varAlpha } from 'src/theme/styles';
-
-import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
   title?: string;
   subheader?: string;
-  list: { value: string; label: string; total: number }[];
+  successRate: number; // Success rate in percentage
+  totalSuccess: number; // Total number of successful messages
+  quotas: { value: string; label: string; total: number }[]; // Quotas for the bottom boxes
 };
 
-export function AnalyticsTrafficBySite({ title, subheader, list, sx, ...other }: Props) {
+export function SuccessMessage({
+  title,
+  subheader,
+  successRate,
+  totalSuccess,
+  quotas,
+  sx,
+  ...other
+}: Props) {
   return (
     <Card sx={sx} {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      {/* First row with 1 item */}
-      <Box display="grid" gap={2} gridTemplateColumns="1fr" sx={{ p: 3 }}>
-        {list.slice(0, 1).map((site) => (
+      {/* WhatsApp Success Section */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          py: 3,
+          borderRadius: 2,
+          mx: 2,
+          mb: 3,
+        }}
+      >
+        {/* Success Rate Circular Progress */}
+        <Box sx={{ position: 'relative', display: 'inline-flex', mt: 2 }}>
+          <CircularProgress
+            variant="determinate"
+            value={successRate}
+            size={56}
+            thickness={4}
+            color="success"
+          />
           <Box
-            key={site.label}
-            sx={(theme) => ({
-              py: 2.5,
+            sx={{
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              position: 'absolute',
               display: 'flex',
-              borderRadius: 1.5,
-              textAlign: 'center',
               alignItems: 'center',
-              flexDirection: 'column',
-              border: `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
-            })}
+              justifyContent: 'center',
+            }}
           >
-            {/* Render icon conditionally based on the value */}
-            {site.value === 'facebook' && (
-              <Iconify icon="eva:facebook-fill" color="#1877F2" width={32} />
-            )}
-            {site.value === 'google' && <Iconify icon="logos:google-icon" width={32} />}
-            {site.value === 'linkedin' && (
-              <Iconify icon="eva:linkedin-fill" color="#0A66C2" width={32} />
-            )}
-            {site.value === 'twitter' && <Iconify icon="ri:twitter-x-fill" width={32} />}
-
-            <Typography variant="h6" sx={{ mt: 1 }}>
-              {fShortenNumber(site.total)}
-            </Typography>
-
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {site.label}
+            <Typography variant="caption" component="div" color="text.secondary">
+              {`${Math.round(successRate)}%`}
             </Typography>
           </Box>
-        ))}
+        </Box>
+
+        {/* Total Success */}
+        <Typography variant="h4" sx={{ mt: 1 }}>
+          {fShortenNumber(totalSuccess)}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Total Success
+        </Typography>
       </Box>
 
-      {/* Second row with 3 items */}
-      <Box display="grid" gap={2} gridTemplateColumns="repeat(3, 1fr)" sx={{ p: 3 }}>
-        {list.slice(1, 4).map((site) => (
+      {/* Bottom row with quotas */}
+      <Box display="grid" gap={2} gridTemplateColumns="repeat(3, 1fr)" sx={{ px: 2, pb: 3 }}>
+        {quotas.map((quota) => (
           <Box
-            key={site.label}
+            key={quota.label}
             sx={(theme) => ({
               py: 2.5,
               display: 'flex',
@@ -72,25 +89,17 @@ export function AnalyticsTrafficBySite({ title, subheader, list, sx, ...other }:
               textAlign: 'center',
               alignItems: 'center',
               flexDirection: 'column',
-              border: `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
+              gap: 1,
             })}
           >
-            {/* Render icon conditionally based on the value */}
-            {site.value === 'facebook' && (
-              <Iconify icon="eva:facebook-fill" color="#1877F2" width={32} />
-            )}
-            {site.value === 'google' && <Iconify icon="logos:google-icon" width={32} />}
-            {site.value === 'linkedin' && (
-              <Iconify icon="eva:linkedin-fill" color="#0A66C2" width={32} />
-            )}
-            {site.value === 'twitter' && <Iconify icon="ri:twitter-x-fill" width={32} />}
-
+            {/* Total Remaining Quota */}
             <Typography variant="h6" sx={{ mt: 1 }}>
-              {fShortenNumber(site.total)}
+              {fShortenNumber(quota.total)}
             </Typography>
 
+            {/* Quota Label */}
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {site.label}
+              {quota.label}
             </Typography>
           </Box>
         ))}

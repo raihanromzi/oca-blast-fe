@@ -9,9 +9,7 @@ import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
 
-
 // import { _posts, _tasks, _timeline } from 'src/_mock';
-
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import Box from '@mui/material/Box';
@@ -19,14 +17,14 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
-
 // import { AnalyticsNews } from '../analytics-news';
 // import { AnalyticsTasks } from '../analytics-tasks';
 // import { AnalyticsCurrentVisits } from '../analytics-current-visits';
 // import { AnalyticsOrderTimeline } from '../analytics-order-timeline';
 // import { AnalyticsWebsiteVisits } from '../analytics-website-visits';
 // import { AnalyticsWidgetSummary } from '../analytics-widget-summary';
-import { AnalyticsTrafficBySite } from '../analytics-traffic-by-site';
+import { RemainingQuota } from '../remaining-quota';
+import { SuccessMessage } from '../analytics-traffic-by-site';
 // import { AnalyticsCurrentSubject } from '../analytics-current-subject';
 // import { AnalyticsConversionRates } from '../analytics-conversion-rates';
 
@@ -41,8 +39,8 @@ export function OverviewAnalyticsView() {
 
       {/* Banner slideshow inside Material-UI Card */}
       <Card sx={{ mb: 4, p: 3, borderRadius: 2 }}>
-        <Typography variant="h5" component="div" sx={{ mb: 2, textAlign: 'center' }}>
-            Hi, Welcome to OCA Dashboard! 👋
+        <Typography variant="h5" component="div" sx={{ mb: { xs: 3, md: 5 } }}>
+          Hi, Welcome to OCA Dashboard! 👋
         </Typography>
 
         <Swiper
@@ -57,25 +55,17 @@ export function OverviewAnalyticsView() {
           <SwiperSlide>
             <Box
               component="img"
-              src="https://via.placeholder.com/1200x400?text=Banner+1"
+              src="https://utfs.io/f/PmkugTpD2YmUGLFvSkssKFc42nCOBNulDHbAtwvgaS96hVYU"
               alt="Banner 1"
-              sx={{ width: '100%', height: 'auto' }}
+              sx={{ width: 'auto', height: '100%' }}
             />
           </SwiperSlide>
           <SwiperSlide>
             <Box
               component="img"
-              src="https://via.placeholder.com/1200x400?text=Banner+2"
-              alt="Banner 2"
-              sx={{ width: '100%', height: 'auto' }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              component="img"
-              src="https://via.placeholder.com/1200x400?text=Banner+3"
-              alt="Banner 3"
-              sx={{ width: '100%', height: 'auto' }}
+              src="https://utfs.io/f/PmkugTpD2YmUknWsAHvjRGfuEYPm9MwtWOpAcqUsI3rhFz02"
+              alt="Banner 1"
+              sx={{ width: 'auto', height: '100%' }}
             />
           </SwiperSlide>
         </Swiper>
@@ -83,37 +73,37 @@ export function OverviewAnalyticsView() {
 
       <Grid container spacing={3}>
         <Grid xs={12} md={6} lg={4}>
-          <AnalyticsTrafficBySite
-            title="WhatsApp"
+          <RemainingQuota
+            title="Remaining Quota"
             list={[
-              { value: 'facebook', label: 'Facebook', total: 323234 },
-              { value: 'google', label: 'Google', total: 341212 },
-              { value: 'linkedin', label: 'Linkedin', total: 411213 },
-              { value: 'twitter', label: 'Twitter', total: 443232 },
+              { value: 'whatsAppQuota', label: 'WhatsApp Quota', total: 260000 },
+              { value: 'emailQuota', label: 'Email Quota', total: 130000 },
             ]}
           />
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>
-          <AnalyticsTrafficBySite
-            title="WhatsApp"
-            list={[
-              { value: 'facebook', label: 'Facebook', total: 323234 },
-              { value: 'google', label: 'Google', total: 341212 },
-              { value: 'linkedin', label: 'Linkedin', total: 411213 },
-              { value: 'twitter', label: 'Twitter', total: 443232 },
+          <SuccessMessage
+            title="WhatsApp Success"
+            successRate={60} // 60% success rate
+            totalSuccess={76253} // 76,253 successful messages
+            quotas={[
+              { value: 'whatsAppQuota', label: 'Blasting', total: 84763 },
+              { value: 'instantMessages', label: 'Instant Messages', total: 50496 },
+              { value: 'schedulerMessages', label: 'Scheduler Messages', total: 34267 },
             ]}
           />
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>
-          <AnalyticsTrafficBySite
-            title="Email"
-            list={[
-              { value: 'facebook', label: 'Facebook', total: 323234 },
-              { value: 'google', label: 'Google', total: 341212 },
-              { value: 'linkedin', label: 'Linkedin', total: 411213 },
-              { value: 'twitter', label: 'Twitter', total: 443232 },
+          <SuccessMessage
+            title="Email Success"
+            successRate={80} // 60% success rate
+            totalSuccess={3535} // 76,253 successful messages
+            quotas={[
+              { value: 'emailQuota', label: 'Blasting', total: 4321 },
+              { value: 'instantMessages', label: 'Instant Messages', total: 13253 },
+              { value: 'schedulerMessages', label: 'Scheduler Messages', total: 87123 },
             ]}
           />
         </Grid>

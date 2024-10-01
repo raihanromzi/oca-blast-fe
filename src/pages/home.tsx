@@ -15,8 +15,8 @@ export default function Page() {
         <meta name="description" content="This is OCA built by Team 35 Digistar" />
         <meta name="keywords" content="react,material,kit,application,dashboard,admin,template" />
       </Helmet>
-
       <OverviewAnalyticsView />
+
       <ContactView />
     </>
   );
