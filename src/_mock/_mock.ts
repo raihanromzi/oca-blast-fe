@@ -230,3 +230,47 @@ export const _productNames = (index: number) =>
     'Nike React Art3mis',
     'Nike React Infinity Run Flyknit A.I.R. Chaz Bear',
   ][index];
+
+export const _idCampaign = (index: number) => `campaign-${index}`;
+
+export const _campaignName = (index: number) =>
+  [
+    'Product Desc',
+    'Welcome Greetings',
+    'Upscale Marketing',
+    'August Promotion',
+    'Autumn Campaign',
+    'Holiday Sale',
+    'Spring Launch',
+    'Winter Specials',
+    'Flash Sale Promo',
+    'Back to School Campaign',
+    'Black Friday Deal',
+    'Cyber Monday Promo',
+    'New Year Blast',
+    'Valentine Special',
+    'Summer Vibes',
+    'End of Season Sale',
+    'Customer Appreciation Campaign',
+    'Exclusive Member Offer',
+    'New Product Launch',
+    'Grand Opening Special',
+    'Anniversary Celebration',
+    'VIP Customer Promo',
+    'Weekend Blast',
+    'Winter Clearance',
+  ][index % 24];
+
+export const _channel = (index: number) => ['Email', 'WhatsApp', 'SMS', 'WhatsApp'][index % 4];
+
+export const _contact = (index: number) =>
+  [
+    'New Customer',
+    'New Costumer',
+    'Leads November Campaign',
+    'All Customer',
+    'Returning Customers',
+  ][index % 5];
+
+export const _status = (index: number) =>
+  ['Finish', 'On Schedule', 'In Progress', 'Failed'][index % 4];

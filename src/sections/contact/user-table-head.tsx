@@ -22,9 +22,17 @@ export function UserTableHead({ order, onSort, orderBy, headLabel }: UserTableHe
         {headLabel.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.align || 'left'}
+            align={headCell.align || 'center'}
             sortDirection={orderBy === headCell.id ? order : false}
-            sx={{ width: headCell.width, minWidth: headCell.minWidth }}
+            sx={{
+              width: 100,
+              minWidth: headCell.minWidth,
+              // Ensure consistent header height
+              height: 56, // Set a fixed height for table header cells
+              padding: '12px', // Ensure consistent padding
+              fontWeight: 'bold', // Make the header text bold for clarity
+              fontSize: '0.875rem', // Ensure consistent font size
+            }}
           >
             <TableSortLabel
               hideSortIcon

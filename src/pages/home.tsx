@@ -16,7 +16,6 @@ export default function Page() {
         <meta name="keywords" content="react,material,kit,application,dashboard,admin,template" />
       </Helmet>
       <OverviewAnalyticsView />
-
       <ContactView />
     </>
   );

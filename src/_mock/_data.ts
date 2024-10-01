@@ -1,14 +1,19 @@
 import {
-  _id,
-  _price,
-  _times,
   _boolean,
+  _campaignName,
+  _channel,
   _company,
-  _fullName,
-  _taskNames,
-  _postTitles,
+  _contact,
   _description,
+  _fullName,
+  _id,
+  _idCampaign,
+  _postTitles,
+  _price,
   _productNames,
+  _status,
+  _taskNames,
+  _times,
 } from './_mock';
 
 // ----------------------------------------------------------------------
@@ -60,6 +65,19 @@ export const _posts = [...Array(23)].map((_, index) => ({
     name: _fullName(index),
     avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
   },
+}));
+
+// ----------------------------------------------------------------------
+
+export const _broadcastActivities = [...Array(24)].map((_, index) => ({
+  id: _idCampaign(index),
+  campaignName: _campaignName(index),
+  channel: _channel(index),
+  contact: _contact(index),
+  totalBroadcast: 1200, // Fixed number based on the image
+  createdDate: '12-06-2022 12:12', // Static date from image
+  broadcastDate: '12-06-2022 12:12', // Static date from image
+  status: _status(index),
 }));
 
 // ----------------------------------------------------------------------
